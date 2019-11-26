@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{profile.informacion.titulo}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <ion-img src="{{profile.informacion.imagen}}"></ion-img>
+    </div>
+
+    <div class="ion-padding">
+        <h2 style="margin-bottom: 0;">{{profile.informacion.titulo}}</h2>
+
+        <ion-list-header>Genero</ion-list-header>
+        <p>
+            <ion-chip outline color="primary" *ngFor="let item of profile.resultado">
+                <ion-label>{{item.name}}</ion-label>
+            </ion-chip>
+        </p>
+
+        <ion-list-header>Sipnosis</ion-list-header>
+        <p>{{profile.informacion.sipnosis}}</p>
+
+        <ion-button expand="block" [routerLink]="['/character', profile.informacion.id]">Personajes</ion-button>
+    </div>
+
+</ion-content>

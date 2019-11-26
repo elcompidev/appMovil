@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Temporadas</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-list>
+        <ion-item>
+            <ion-label>Año:</ion-label>
+            <ion-datetime ([ngModel])="anios" (ionChange)="refrescar( $event )" slot="end" display-format="YYYY" picker-format="YYYY" value="2020"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Epoca:</ion-label>
+            <ion-select slot="end" value="summer" (ionChange)="refrescarTiempo( $event )">
+                <ion-select-option value="summer">Verano</ion-select-option>
+                <ion-select-option value="spring">Primavera</ion-select-option>
+                <ion-select-option value="fall">Otoño</ion-select-option>
+                <ion-select-option value="winter">Invierno</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Resultados
+        </ion-list-header>
+
+        <ion-item *ngFor="let item of temporadas.resultado"  [routerLink]="['/episodes', item.mal_id]">
+            <ion-avatar slot="start">
+                <img src="{{item.image_url}}">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{item.title}}</h2>
+                <p>{{item.synopsis}}</p>
+            </ion-label>
+            <ion-note slot="end" color="danger">{{item.episodes}}</ion-note>
+        </ion-item>
+    </ion-list>
+</ion-content>

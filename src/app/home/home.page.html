@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Anime
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides  [options]="slideOptsOne">
+    <ion-slide>
+        <ion-img src="assets/banner/home.png"></ion-img>
+    </ion-slide>
+
+    <ion-slide>
+        <ion-img src="assets/banner/anime-2.jpg"></ion-img>
+    </ion-slide>
+
+    <ion-slide>
+        <ion-img src="assets/banner/anime-3.jpg"></ion-img>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of top.resultado" [routerLink]="['/profile', item.mal_id]">
+          <img src="{{item.image_url}}" style="width:80px;max-width:80px;min-width:80px">
+        <p>{{ item.title }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="siguiente($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más información">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

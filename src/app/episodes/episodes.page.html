@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Episodios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+        <ion-list-header>
+            Episodios
+        </ion-list-header>
+
+        <ion-item *ngFor="let item of episodios.resultado">
+            <ion-avatar slot="start">
+                <img src="{{item.image_url}}">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{item.title}}</h2>
+                <p>{{item.url}}</p>
+                <a href="{{item.url}}">Ver Video</a>
+            </ion-label>
+            <ion-note slot="end" color="danger">{{item.episodes}}</ion-note>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Videos
+        </ion-list-header>
+
+        <ion-item *ngFor="let item of episodios.videos">
+            <ion-avatar slot="start">
+                <img src="{{item.image_url}}">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{item.title}}</h2>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>
